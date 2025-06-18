@@ -131,7 +131,7 @@
                     <!-- Aquí se agregarán los usuarios dinámicamente -->
                     <tr>
                         <td>1</td>
-                        <td>Juan Pérez</td>
+                        <td>Carlos Jara Grados</td>
                         <td>juan.perez@ejemplo.com</td>
                         <td>Administrador</td>
                         <td>
@@ -162,7 +162,17 @@
                         </td>
                     </tr>
 
-                    <!-- Más usuarios aquí... -->
+                    <tr>
+                        <td>4</td>
+                        <td>Ana Ruiz</td>
+                        <td>ana.ruiz@ejemplo.com</td>
+                        <td>Administrador</td>
+                        <td>
+                            <button class="btn btn-custom edit-btn" data-id="4">Editar</button>
+                            <button class="btn btn-danger delete-btn" data-id="4">Eliminar</button>
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
 
@@ -217,8 +227,10 @@
     <script>
         // Variables de ejemplo de usuarios
         const users = [
-            { id: 1, name: "Juan Pérez", email: "juan.perez@ejemplo.com", role: "Administrador" },
-            { id: 2, name: "María Gómez", email: "maria.gomez@ejemplo.com", role: "Usuario" }
+            { id: 1, name: "Carlos Jara Grados", email: "juan.perez@ejemplo.com", role: "Administrador" },
+            { id: 2, name: "Jonhathan Huaman Rojas", email: "maria.gomez@ejemplo.com", role: "Usuario" },
+            { id: 3, name: "Jefferson Machado Recinas", email: "machadorecinasj@gmail.com", role: "Usuario" },
+            { id: 4, name: "Yosvil Pizarro Arroyo", email: "ana.ruiz@ejemplo.com", role: "Administrador" }
         ];
 
         // Cargar la tabla con los datos de los usuarios
