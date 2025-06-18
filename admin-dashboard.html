@@ -1,0 +1,116 @@
+<!-- admin-dashboard.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Administración</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* === FUENTE Y GENERAL === */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0f7e9, #d0f0d5);
+      animation: fondoVerde 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes fondoVerde {
+      0% {
+        background: linear-gradient(135deg, #e0f7e9, #d0f0d5);
+      }
+      100% {
+        background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+      }
+    }
+
+    .container {
+      max-width: 750px;
+      margin: 80px auto;
+      background: #ffffffcc;
+      padding: 50px 40px;
+      border-radius: 25px;
+      box-shadow: 10px 10px 30px #cde6cd, -10px -10px 30px #ffffff;
+    }
+
+    h1 {
+      font-weight: 800;
+      color: #2e7d32;
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    ul.list-group {
+      padding: 0;
+    }
+
+    .list-group-item {
+      background: #f1fdf3;
+      border: none;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 8px 8px 20px #cde6cd, -8px -8px 20px #ffffff;
+    }
+
+    .list-group-item a {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #2e7d32;
+      transition: color 0.3s ease;
+    }
+
+    .list-group-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(46, 125, 50, 0.2);
+      background: linear-gradient(to right, #a5d6a7, #c8e6c9);
+    }
+
+    .list-group-item:hover a {
+      color: #1b5e20;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .container {
+        margin: 30px 20px;
+        padding: 30px 20px;
+      }
+
+      .list-group-item a {
+        font-size: 16px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌿 Bienvenido al Panel de Administración</h1>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a href="admin-products.html">📦 Gestionar Productos Exportados</a>
+      </li>
+      <li class="list-group-item">
+        <a href="admin-orders.html">🧾 Gestionar Pedidos</a>
+      </li>
+      <li class="list-group-item">
+        <a href="admin-users.html">👥 Gestionar Clientes</a>
+      </li>
+    </ul>
+  </div>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

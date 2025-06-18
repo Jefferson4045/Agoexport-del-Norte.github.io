@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión - Administrador</title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* Fondo animado verde y azul */
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #56ab2f, #a8e063);
+      animation: fondoVerde 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes fondoVerde {
+      0% {
+        background: linear-gradient(120deg, #56ab2f, #a8e063);
+      }
+      100% {
+        background: linear-gradient(120deg, #11998e, #38ef7d);
+      }
+    }
+
+    /* Contenedor del login ocupa todo el alto */
+    .login-full {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 40px;
+      color: #fff;
+    }
+
+    /* Lado izquierdo informativo */
+    .login-info {
+      max-width: 500px;
+    }
+
+    .login-info h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .login-info p {
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    /* Formulario ocupa gran parte del espacio */
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+      color: #333;
+    }
+
+    .form-container h2 {
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #2f2f2f;
+    }
+
+    .form-label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .form-control {
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      border-color: #38b000;
+      box-shadow: 0 0 10px rgba(56, 176, 0, 0.3);
+    }
+
+    .btn-custom {
+      background: linear-gradient(to right, #56ab2f, #a8e063);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background: linear-gradient(to right, #2f7336, #aa3f27);
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Responsive para móvil o pantalla pequeña */
+    @media (max-width: 768px) {
+      .login-full {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+      }
+
+      .login-info {
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-full">
+    <div class="login-info">
+            <h1 style="color: black;">Agroexport del Norte</h1>
+      <h1>Bienvenido al Sistema</h1>
+      <p>Accede al panel de administración para gestionar productos, clientes y pedidos de manera segura y eficiente.</p>
+    </div>
+
+    <div class="form-container">
+      <h2>Iniciar Sesión</h2>
+      <form action="admin-dashboard.html" method="post">
+        <div class="mb-3">
+          <label for="username" class="form-label">👤 Usuario</label>
+          <input type="text" class="form-control" id="username" name="username" required />
+        </div>
+        <div class="mb-4">
+          <label for="password" class="form-label">🔒 Contraseña</label>
+          <input type="password" class="form-control" id="password" name="password" required />
+        </div>
+        <button type="submit" class="btn btn-custom">Iniciar sesión</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!-- admin-users.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios - Panel de Administración</title>
+    
+    <!-- Google Fonts: Tipografía 'Poppins' -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f9f4;
+            color: #333;
+            padding-top: 50px;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #2e7d32;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            padding: 30px;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .table {
+            border-radius: 10px;
+            border: 1px solid #e1e1e1;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Encabezado de tabla */
+        .table thead {
+            background-color: #2e7d32;
+            color: #fff;
+        }
+
+        .table th {
+            font-weight: bold;
+        }
+
+        /* Fila de tabla al pasar el mouse */
+        .table tbody tr:hover {
+            background-color: #e8f5e9;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Botones de acción */
+        .btn-custom {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #218838;
+            border-color: #218838;
+            transform: scale(1.05);
+        }
+
+        /* Estilos para la sección de agregar usuario */
+        .add-user-section {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .add-user-btn {
+            background-color: #2e7d32;
+            color: white;
+            font-weight: bold;
+            padding: 10px 30px;
+            border-radius: 5px;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-user-btn:hover {
+            background-color: #218838;
+        }
+
+        /* Modal de agregar usuario */
+        .modal-content {
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <h1>Gestión de Usuarios - Agroexport del Norte S.R.L.</h1>
+
+        <!-- Tarjeta principal -->
+        <div class="card">
+            <h4 class="text-center">Usuarios Registrados</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="userTable">
+                    <!-- Aquí se agregarán los usuarios dinámicamente -->
+                    <tr>
+                        <td>1</td>
+                        <td>Juan Pérez</td>
+                        <td>juan.perez@ejemplo.com</td>
+                        <td>Administrador</td>
+                        <td>
+                            <button class="btn btn-custom edit-btn" data-id="1">Editar</button>
+                            <button class="btn btn-danger delete-btn" data-id="1">Eliminar</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>María Gómez</td>
+                        <td>maria.gomez@ejemplo.com</td>
+                        <td>Usuario</td>
+                        <td>
+                            <button class="btn btn-custom edit-btn" data-id="2">Editar</button>
+                            <button class="btn btn-danger delete-btn" data-id="2">Eliminar</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Jefferson Machado Recinas</td>
+                        <td>machadorecinasj@gmail.com</td>
+                        <td>Usuario</td>
+                        <td>
+                            <button class="btn btn-custom edit-btn" data-id="3">Editar</button>
+                            <button class="btn btn-danger delete-btn" data-id="3">Eliminar</button>
+                        </td>
+                    </tr>
+
+                    <!-- Más usuarios aquí... -->
+                </tbody>
+            </table>
+
+            <!-- Botón para agregar usuario -->
+            <div class="add-user-section">
+                <button class="add-user-btn" data-toggle="modal" data-target="#addUserModal">Agregar Nuevo Usuario</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar nuevo usuario -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addUserModalLabel">Agregar Nuevo Usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addUserForm">
+                        <div class="form-group">
+                            <label for="userName">Nombre</label>
+                            <input type="text" class="form-control" id="userName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">Email</label>
+                            <input type="email" class="form-control" id="userEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userRole">Rol</label>
+                            <select class="form-control" id="userRole" required>
+                                <option value="Usuario">Usuario</option>
+                                <option value="Administrador">Administrador</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="saveUser">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Variables de ejemplo de usuarios
+        const users = [
+            { id: 1, name: "Juan Pérez", email: "juan.perez@ejemplo.com", role: "Administrador" },
+            { id: 2, name: "María Gómez", email: "maria.gomez@ejemplo.com", role: "Usuario" }
+        ];
+
+        // Cargar la tabla con los datos de los usuarios
+        function loadUsers() {
+            const userTable = document.getElementById("userTable");
+            userTable.innerHTML = ''; // Limpiar la tabla antes de agregar
+
+            users.forEach(user => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.role}</td>
+                    <td>
+                        <button class="btn btn-custom edit-btn" data-id="${user.id}">Editar</button>
+                        <button class="btn btn-danger delete-btn" data-id="${user.id}">Eliminar</button>
+                    </td>
+                `;
+                userTable.appendChild(row);
+            });
+
+            // Asignar eventos a los botones de editar y eliminar
+            document.querySelectorAll('.edit-btn').forEach(button => {
+                button.addEventListener('click', editUser);
+            });
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', deleteUser);
+            });
+        }
+
+        // Editar usuario
+        function editUser(event) {
+            const userId = event.target.getAttribute('data-id');
+            const user = users.find(u => u.id == userId);
+
+            if (user) {
+                document.getElementById('userName').value = user.name;
+                document.getElementById('userEmail').value = user.email;
+                document.getElementById('userRole').value = user.role;
+
+                // Mostrar el modal
+                $('#addUserModal').modal('show');
+
+                // Actualizar el usuario al guardar
+                document.getElementById('saveUser').onclick = function() {
+                    user.name = document.getElementById('userName').value;
+                    user.email = document.getElementById('userEmail').value;
+                    user.role = document.getElementById('userRole').value;
+                    loadUsers();
+                    $('#addUserModal').modal('hide');
+                };
+            }
+        }
+
+        // Eliminar usuario
+        function deleteUser(event) {
+            const userId = event.target.getAttribute('data-id');
+            const userIndex = users.findIndex(u => u.id == userId);
+            if (userIndex !== -1) {
+                users.splice(userIndex, 1);
+                loadUsers();
+            }
+        }
+
+        // Agregar un nuevo usuario
+        document.getElementById('saveUser').addEventListener('click', function() {
+            const newUser = {
+                id: users.length + 1,
+                name: document.getElementById('userName').value,
+                email: document.getElementById('userEmail').value,
+                role: document.getElementById('userRole').value
+            };
+            users.push(newUser);
+            loadUsers();
+            $('#addUserModal').modal('hide');
+        });
+
+        // Inicializar la carga de usuarios
+        loadUsers();
+    </script>
+</body>
+</html>
